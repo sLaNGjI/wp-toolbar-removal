@@ -1,22 +1,24 @@
 <?php 
 /*
-Plugin Name: WP Toolbar Removal - DEV
-Plugin URI: http://slangji.wordpress.com/wp-toolbar-removal/
-Description: disable toolbar or admin bar on WordPress 3.1+ to 4.0+ for all admin and user roles, completely remove code on front and back end with related user personal options settings, for minimize memory consumption and speed up loading of the admin control panel with new unified coding approach, without loosing logout and network multisite functionality: the configuration of this plugin is Automatic! DEVELOPMENT VERSION (Build 2014-07-09)
-Version: 2014.0709.0400
-Author: slangjis
-Author URI: http://slangji.wordpress.com/
+Plugin Name: WP Toolbar Removal
+Plugin URI: https://slangji.wordpress.com/wp-toolbar-removal/
+Description: disable toolbar or admin bar on WordPress 3.1+ to 4.5+ for all admin and user roles, completely remove code on front and back end with related user personal options settings, for minimize memory consumption and speed up loading of the admin control panel with new unified coding approach, without loosing logout and network multisite functionality: the configuration is Automatic ans plugin is NoLogo!
+Author: sLaNGjIs
+Author URI: https://slangji.wordpress.com/plugins/
 Requires at least: 3.1
-Tested up to: 4.0.0
+Tested up to: 4.5
+Version: 2014.0816.0392
 License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 */
 
 /**
-Indentation: GNU style coding standard
-Indentation URI: http://www.gnu.org/prep/standards/standards.html
-Humans: We are the humans behind
-Humans URI: http://humanstxt.org/Standard.html
+ * Approved 
+ * Build 
+ * Indentation GNU style coding standard
+ * Indentation URI https://www.gnu.org/prep/standards/standards.html
+ * Humans We are the humans behind
+ * Humans URI https://humanstxt.org/Standard.html
  *
  * LICENSING (license.txt)
  *
@@ -172,10 +174,10 @@ Humans URI: http://humanstxt.org/Standard.html
 	 * @description Disable WordPress Toolbar or Admin Bar and Remove Code
 	 * @install The configuration of this plugin is Automatic!
 	 * @branche 2014
-	 * @build   2014-07-09
-	 * @since   3.1.0
-	 * @tested  4.0.0
-	 * @version 2014.0709.0400
+	 * @build   2014-08-15
+	 * @since   3.1+
+	 * @tested  3.9+
+	 * @version 2014.0816.0392
 	 * @status STABLE (trunk) release
 	 * @development Code in Becoming!
 	 * @author slangjis
@@ -403,7 +405,7 @@ Humans URI: http://humanstxt.org/Standard.html
 
 	function wptbr_hfl()
 		{
-			echo "\n<!--Plugin WP Toolbar Removal DEV 2014.0709.0400 Build 2014-07-09 Active - Tag ".md5(md5("".""))."-->\n";
+			echo "\n<!--Plugin WP Toolbar Removal 2014.0816.0392 Active - Tag ".md5(md5("".""))."-->\n";
 			echo "\n<!--Site Optimized to Speedup Control Panel Minimize Memory Consumption with Disabled";
 
 			global $wp_version;
@@ -426,35 +428,35 @@ Humans URI: http://humanstxt.org/Standard.html
 	add_action( 'wp_head', 'wptbr_hfl' );
 	add_action( 'wp_footer', 'wptbr_hfl' );
 
-	if( file_exists( plugin_dir_path( __FILE__ ) . 'wp-toolbar-removal-dev.js' ) )
+	if( file_exists( plugin_dir_path( __FILE__ ) . 'wp-toolbar-removal.js' ) )
 
 		{
 
-			add_action( 'admin_enqueue_scripts' , 'wptbr_external_js_enqueue_style_dev' );
+			add_action( 'admin_enqueue_scripts' , 'wp_toolbar_removal_js' );
 
 		}
 
-	function wptbr_external_js_enqueue_style_dev()
+	function wp_toolbar_removal_js()
 
 		{
 
-			wp_enqueue_script( 'wp-toolbar-removal-dev' , plugins_url( 'wp-toolbar-removal-dev.js' , __FILE__ ) , array( 'admin-bar' , 'common' ) );
+			wp_enqueue_script( 'wp-toolbar-removal' , plugins_url( 'wp-toolbar-removal.js' , __FILE__ ) , array( 'admin-bar' , 'common' ) );
 
 		}
 
-	if( file_exists( plugin_dir_path( __FILE__ ) . 'wp-toolbar-removal-dev.css' ) )
+	if( file_exists( plugin_dir_path( __FILE__ ) . 'wp-toolbar-removal.css' ) )
 
 		{
 
-			add_action( 'admin_enqueue_scripts' , 'wptbr_external_css_enqueue_style_dev' );
+			add_action( 'admin_enqueue_scripts' , 'wp_toolbar_removal_css' );
 
 		}
 
-	function wptbr_external_css_enqueue_style_dev()
+	function wp_toolbar_removal_css()
 
 		{
 
-			wp_enqueue_style( 'wp-toolbar-removal-dev' , plugins_url( 'wp-toolbar-removal-dev.css' , __FILE__ ) );
+			wp_enqueue_style( 'wp-toolbar-removal' , plugins_url( 'wp-toolbar-removal.css' , __FILE__ ) );
 
 		}
 
